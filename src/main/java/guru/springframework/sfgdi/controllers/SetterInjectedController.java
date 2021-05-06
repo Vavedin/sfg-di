@@ -9,14 +9,17 @@ import org.springframework.stereotype.Controller;
  * Created by jt on 12/26/19.
  */
 @Controller
-public class PropertyInjectedController {
+public class SetterInjectedController {
 
-    @Qualifier("propertyInjectedGreetingService")
+    private GreetingService greetingService;
+
+    @Qualifier("setterInjectedGreetingService")
     @Autowired
-    public GreetingService greetingService;
+    public void setGreetingService(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
 
     public String getGreeting(){
         return greetingService.sayGreeting();
     }
-
 }
